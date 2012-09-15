@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>
+	</title>
+	<link rel="stylesheet" href="my.css"/>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+	</script>
+
+	<script>
+
+
+	</script>
+
+</head>
+<body>
+
+</div>
+<button onclick="onButtonPressed();">On</button>
+<button onclick="offButtonPressed();">Off</button>
+
+<p>Text message: <span id="textMsg"></span></p>
+
+<p>Number message:<span id="numberMsg"></span></p>
+
+</div>
+
+
+</body>
+<script>
+
+	$(document).ready(function ready() {
+
+		var ws = null;
+		connectToSocket();
+
+	});
+
+	function connectToSocket() {
+
+		ws = new WebSocket('ws://' + document.location.host + '/hellowebsocket');
+		console.log('Connecting...');
+		ws.onopen = function () {
+			console.log("Connected!");
+		};
+		ws.onclose = function () {
+			console.log("Lost connection!");
+			ws = null;
+		};
+		ws.onmessage = function (msg) {
+			showMessage(msg.data);
+		};
+	}
+
+	function showMessage(text) {
+		console.log("Message: "+text);
+		if (!isNaN(text)) {
+
+			//Number
+			$("#numberMsg").html(text);
+
+		} else {
+
+			//Text
+			$("#textMsg").html(text);
+
+		}
+
+	}
+
+	function onButtonPressed() {
+		ws.send("ON");
+	}
+	function offButtonPressed() {
+		ws.send("OFF");
+	}
+
+
+</script>
+
+</html>
