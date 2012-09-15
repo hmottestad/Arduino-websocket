@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.TooManyListenersException;
 
-public class SerialTest implements SerialPortEventListener {
+public class ArduinoSerialUSB implements SerialPortEventListener {
 
 
 	SerialPort serialPort;

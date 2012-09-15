@@ -10,9 +10,9 @@ import java.io.PrintWriter;
 
 public class Controller {
 
-	static SerialTest serialMain;
+	public static ArduinoSerialUSB arduinoSerialUSB;
 	public static final int PORT = 50001;
-	public static WebServer webServer;
+	private static WebServer webServer;
 	public static WebSocketServer webSocketServer;
 
 
@@ -31,8 +31,8 @@ public class Controller {
 		webServer.start();
 		System.out.println("Server running at " + webServer.getUri());
 
-		serialMain = new SerialTest();
-		serialMain.initialize();
+		arduinoSerialUSB = new ArduinoSerialUSB();
+		arduinoSerialUSB.initialize();
 
 	}
 

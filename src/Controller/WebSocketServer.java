@@ -62,7 +62,7 @@ public class WebSocketServer extends BaseWebSocketHandler {
 		send[0] = (byte) i;
 		try {
 			System.out.println(send[0]);
-			Controller.serialMain.output.write(send);
+			Controller.arduinoSerialUSB.output.write(send);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
