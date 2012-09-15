@@ -13,17 +13,10 @@ public class ArduinoSerialUSB implements SerialPortEventListener {
 
 	SerialPort serialPort;
 
-	String hostname = Settings.config.getProperty("emailServer");
-	String username = Settings.config.getProperty("emailUser");
-	String password = Settings.config.getProperty("emailPassword");
-	/**
-	 * The port we're normally going to use.
-	 */
 	static String PORT_NAMES[] = {
-		                               "FROM SETTINGS", // Mac OS X
+		                               "FROM SETTINGS",
 		                               "/dev/tty.usbmodemfd131", // Mac OS X2
 		                               "/dev/tty.usbmodemfd141", // Mac OS X3
-
 		                               "/dev/ttyUSB0", // Linux
 		                               "COM4", // Windows
 	};
