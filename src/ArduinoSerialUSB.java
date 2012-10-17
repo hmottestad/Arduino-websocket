@@ -1,4 +1,3 @@
-package Controller;
 
 import gnu.io.*;
 
@@ -14,11 +13,18 @@ public class ArduinoSerialUSB implements SerialPortEventListener {
 	SerialPort serialPort;
 
 	static String PORT_NAMES[] = {
-		                               "FROM SETTINGS",
-		                               "/dev/tty.usbmodemfd131", // Mac OS X2
-		                               "/dev/tty.usbmodemfd141", // Mac OS X3
+		                               "/dev/tty.usbmodemfd131", // Mac OS X
+		                               "/dev/tty.usbmodemfd141", // Mac OS X
 		                               "/dev/ttyUSB0", // Linux
+		                               "COM1", // Windows
+		                               "COM2", // Windows
+		                               "COM3", // Windows
 		                               "COM4", // Windows
+		                               "COM5", // Windows
+		                               "COM6", // Windows
+		                               "COM7", // Windows
+		                               "COM8", // Windows
+		                               "COM9" // Windows
 	};
 
 
@@ -41,9 +47,6 @@ public class ArduinoSerialUSB implements SerialPortEventListener {
 
 	public void initialize() {
 		CommPortIdentifier portId = null;
-		LoadSettings.load();
-
-		PORT_NAMES[0] = Settings.config.getProperty("usbSerial");
 
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
 
@@ -117,7 +120,6 @@ public class ArduinoSerialUSB implements SerialPortEventListener {
 				System.err.println(e.toString());
 			}
 		}
-		// Ignore all the other eventTypes, but you should consider the other ones.
 	}
 
 }

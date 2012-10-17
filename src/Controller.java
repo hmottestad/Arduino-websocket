@@ -1,4 +1,3 @@
-package Controller;
 
 import org.webbitserver.WebServer;
 import org.webbitserver.WebServers;
@@ -30,23 +29,11 @@ public class Controller {
 			                        .add(new StaticFileHandler("./web"));
 		webServer.start();
 		System.out.println("Server running at " + webServer.getUri());
+		System.out.println("Prøv også \"localhost\"");
 
 		arduinoSerialUSB = new ArduinoSerialUSB();
 		arduinoSerialUSB.initialize();
 
 	}
 
-
-	public static void setStatus(String status) {
-		FileWriter outFile = null;
-		try {
-			outFile = new FileWriter("status.txt");
-			PrintWriter out = new PrintWriter(outFile);
-			out.println(status);
-			out.close();
-			outFile.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
